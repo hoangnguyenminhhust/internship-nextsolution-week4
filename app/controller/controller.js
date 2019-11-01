@@ -31,7 +31,7 @@ exports.register = function (req, res) {
 };
 
 exports.list_all = function (req, res) {
-    var token = req.headers['x-access-token'];
+    var token = req.header('Authorization').replace('Bearer ','');
     if (!token) return res.status(401).send({
         auth: false,
         message: 'No token provided.'
